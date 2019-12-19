@@ -1,10 +1,7 @@
 Question::Answer
-What day did Donald Trump get impeached? (in this format, month-day-year[all 4 digits])::12-18-2019
-What is the bond angle of methane (in degrees)?::109.5
-Which dictator of the Roman Empire was killed by Marcus Junius Brutus?::Julius Caesar
+This series of wars spanned about 400 years. There were nine wars, but only the first four are commonly viewed as "important". Although these wars were mostly between the Turks and the European Kingdoms, other nations such as Egypt and Byzantine were wrapped in. For 10 points, name these religious conquests for the Holy Land.::Crusades
+This Roman Dictator lead the Gallic wars and conquered Gaul. He was technically not an emperor, although he is typically associated with imperial rule. His grandson/adopted son rose to power through the second triumvirate, becoming Emperor of Rome. For 10 points, name the Roman ruler stabbed 23 times on the Ides of March.::Julius Caesar
 Who wrote 'To Kill a Mockingbird'? (First and last name)::Harper Lee
 Who wrote Self-Reliance? (full name)::Ralph Waldo Emerson
-Who made the sculpture David? (last name)::Michelangelo
-What is the sin(30°)?::1/2
-What is the tan(45°) + tan(135°)?::0
+This Renaissance artist designed the dome on St. Peter's Basilica, as commissioned by the Vatican. However, he his most well known for his sculptures. His most famous works include the Creation of Adam on the ceiling of the Sistine Chapel, as well as the statue of David. Name this artist (last name)::Michelangelo
 Who is the host of Jeopardy?::Alex Trebek
