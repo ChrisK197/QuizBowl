@@ -4,12 +4,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,7 +38,11 @@ public class MainFile extends Application {
         imageView.fitHeightProperty().bind(mainPane.heightProperty());
         mainPane.getChildren().add(imageView);
 
-
+        Rectangle qBox = new Rectangle(150, 75, 900, 100);
+        qBox.setFill(Color.WHITE);
+        mainPane.getChildren().add(qBox);
+        qBox.widthProperty().bind(mainPane.widthProperty().multiply(3).divide(4));
+        qBox.heightProperty().bind(mainPane.heightProperty().divide(6));
 
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
@@ -46,7 +51,6 @@ public class MainFile extends Application {
             String[] list = str.split("::");
             qDict.put(list[0], list[1]);
         }
-
 
         //I thought some classical music would be nice, we can change it later tho
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
