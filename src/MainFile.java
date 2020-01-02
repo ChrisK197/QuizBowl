@@ -35,6 +35,7 @@ public class MainFile extends Application {
         imageView.fitWidthProperty().bind(mainPane.widthProperty());
         imageView.fitHeightProperty().bind(mainPane.heightProperty());
         mainPane.getChildren().add(imageView);
+        //
 
         /*throws a file not found exception
         Scanner s = new Scanner(new FileReader("questions.txt"));
