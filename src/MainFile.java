@@ -37,7 +37,7 @@ public class MainFile extends Application {
         mainPane.getChildren().add(imageView);
 
         /*throws a file not found exception
-        Scanner s = new Scanner(new File("questions.txt"));
+        Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
         while (s.hasNext()){
             String str = s.nextLine();
