@@ -37,12 +37,7 @@ public class MainFile extends Application {
         imageView.fitHeightProperty().bind(mainPane.heightProperty());
         mainPane.getChildren().add(imageView);
 
-        Image contestant = new Image("contestant.jpg");
-        ImageView contestantImageView = new ImageView(contestant);
-        contestantImageView.setFitWidth(contestant.getWidth()/2);
-        contestantImageView.setFitHeight(contestant.getHeight()/2);
-        bottomPane.getChildren().add(contestantImageView);
-        bottomPane.toFront();
+
 
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
@@ -51,6 +46,7 @@ public class MainFile extends Application {
             String[] list = str.split("::");
             qDict.put(list[0], list[1]);
         }
+
 
         //I thought some classical music would be nice, we can change it later tho
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
