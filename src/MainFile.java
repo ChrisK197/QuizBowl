@@ -36,6 +36,14 @@ public class MainFile extends Application {
         imageView.fitHeightProperty().bind(mainPane.heightProperty());
         mainPane.getChildren().add(imageView);
 
+        //we need to find a good contestant picture
+        Image contestant = new Image("contestant.jpg");
+        ImageView constestantImageView = new ImageView(contestant);
+        constestantImageView.setFitWidth(contestant.getWidth()/2);
+        constestantImageView.setFitHeight(contestant.getHeight()/2);
+        bottomPane.getChildren().add(constestantImageView);
+        mainPane.getBottom().toFront();
+
         /*throws a file not found exception
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
