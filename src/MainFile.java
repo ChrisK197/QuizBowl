@@ -43,9 +43,10 @@ public class MainFile extends Application {
         contestant1imageView.setFitWidth(contestant1.getWidth()/2);
         contestant1imageView.setFitHeight(contestant1.getHeight()/2);
         bottomPane.getChildren().add(contestant1imageView);
+        bottomPane.toFront();
 
         Image contestant2 = new Image("contestant2.jpg");
-        ImageView contestant2imageView = new ImageView(contestant1);
+        ImageView contestant2imageView = new ImageView(contestant2);
         contestant2imageView.setFitWidth(contestant2.getWidth()/2);
         contestant2imageView.setFitHeight(contestant2.getHeight()/2);
         bottomPane.getChildren().add(contestant2imageView);
