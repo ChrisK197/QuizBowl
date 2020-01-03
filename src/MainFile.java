@@ -33,11 +33,11 @@ public class MainFile extends Application {
         mainPane.setBottom(bottomPane);
         mainPane.setCenter(questionBox);
 
-        Image background = new Image("background.png");
+        /*Image background = new Image("background.png");
         ImageView imageView = new ImageView(background);
         imageView.fitWidthProperty().bind(mainPane.widthProperty());
         imageView.fitHeightProperty().bind(mainPane.heightProperty());
-        mainPane.getChildren().add(imageView);
+        mainPane.getChildren().add(imageView);*/
 
         Image contestant1 = new Image("contestant1.jpg");
         ImageView contestant1imageView = new ImageView(contestant1);
