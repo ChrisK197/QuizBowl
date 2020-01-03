@@ -67,7 +67,7 @@ public class MainFile extends Application {
             String[] list = str.split("::");
             qDict.put(list[0], list[1]);
         }
-        ArrayList<String> keyList = new ArrayList<String>(qDict.keySet());
+        ArrayList<String> keyList = new ArrayList<>(qDict.keySet());
 
         //I thought some classical music would be nice, we can change it later tho
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
