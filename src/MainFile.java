@@ -38,6 +38,18 @@ public class MainFile extends Application {
         imageView.fitHeightProperty().bind(mainPane.heightProperty());
         mainPane.getChildren().add(imageView);
 
+        Image contestant1 = new Image("contestant1.jpg");
+        ImageView contestant1imageView = new ImageView(contestant1);
+        contestant1imageView.setFitWidth(contestant1.getWidth()/2);
+        contestant1imageView.setFitHeight(contestant1.getHeight()/2);
+        bottomPane.getChildren().add(contestant1imageView);
+
+        Image contestant2 = new Image("contestant2.jpg");
+        ImageView contestant2imageView = new ImageView(contestant1);
+        contestant2imageView.setFitWidth(contestant2.getWidth()/2);
+        contestant2imageView.setFitHeight(contestant2.getHeight()/2);
+        bottomPane.getChildren().add(contestant2imageView);
+
         Rectangle qBox = new Rectangle(150, 75, 900, 100);
         qBox.setFill(Color.WHITE);
         mainPane.getChildren().add(qBox);
