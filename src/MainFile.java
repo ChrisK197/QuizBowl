@@ -3,6 +3,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
@@ -32,18 +37,18 @@ public class MainFile extends Application {
         mainPane.setBottom(bottomPane);
         mainPane.setCenter(questionBox);
 
-        Image background = new Image("background.png");
-        ImageView imageView = new ImageView(background);
-        imageView.fitWidthProperty().bind(mainPane.widthProperty());
-        imageView.fitHeightProperty().bind(mainPane.heightProperty());
-        mainPane.getChildren().add(imageView);
+        BackgroundImage myBI= new BackgroundImage(new Image("background.png"),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        mainPane.setBackground(new Background(myBI));
+
 
         Image contestant1 = new Image("contestant1.jpg");
         ImageView contestant1imageView = new ImageView(contestant1);
         contestant1imageView.setFitWidth(contestant1.getWidth()/2);
         contestant1imageView.setFitHeight(contestant1.getHeight()/2);
         bottomPane.getChildren().add(contestant1imageView);
-        bottomPane.toFront();
+//        bottomPane.toFront();
 
         Image contestant2 = new Image("contestant2.jpg");
         ImageView contestant2imageView = new ImageView(contestant2);
