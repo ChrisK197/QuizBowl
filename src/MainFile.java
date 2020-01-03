@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -71,6 +72,7 @@ public class MainFile extends Application {
             String[] list = str.split("::");
             qDict.put(list[0], list[1]);
         }
+        ArrayList<String> keyList = new ArrayList<>(qDict.keySet());
 
         //I thought some classical music would be nice, we can change it later tho
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
