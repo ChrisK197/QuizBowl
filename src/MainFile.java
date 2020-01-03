@@ -56,6 +56,8 @@ public class MainFile extends Application {
         mainPane.getChildren().add(qBox);
         qBox.widthProperty().bind(mainPane.widthProperty().multiply(3).divide(4));
         qBox.heightProperty().bind(mainPane.heightProperty().divide(6));
+        qBox.xProperty().bind(mainPane.widthProperty().divide(8));
+        qBox.yProperty().bind(mainPane.heightProperty().divide(16));
 
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
