@@ -39,7 +39,7 @@ public class MainFile extends Application {
         mainPane.setCenter(questionBox);
 
         BackgroundImage myBI= new BackgroundImage(new Image("background.png"),
-                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         mainPane.setBackground(new Background(myBI));
 
@@ -48,9 +48,15 @@ public class MainFile extends Application {
         ImageView contestant1imageView = new ImageView(contestant1);
         contestant1imageView.setFitWidth(contestant1.getWidth()/2);
         contestant1imageView.setFitHeight(contestant1.getHeight()/2);
-        bottomPane.getChildren().add(contestant1imageView);
-//        bottomPane.toFront();
+        bottomPane.getChildren().add(contestant1imageView);*/
 
+        Text scorep1 = new Text("0");
+        scorep1.setScaleX(3);
+        scorep1.setScaleY(3);
+        scorep1.xProperty().bind(mainPane.widthProperty().multiply(0.045));
+        scorep1.yProperty().bind(mainPane.heightProperty().multiply(.8));
+        mainPane.getChildren().add(scorep1);
+    /*
         Image contestant2 = new Image("contestant2.jpg");
         ImageView contestant2imageView = new ImageView(contestant2);
         contestant2imageView.setFitWidth(contestant2.getWidth()/2);
