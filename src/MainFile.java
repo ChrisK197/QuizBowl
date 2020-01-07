@@ -87,9 +87,27 @@ public class MainFile extends Application {
         mediaPlayer.setVolume(100);
         mediaPlayer.play();
 
+
+        mainPane.setOnKeyPressed(e ->{
+            switch (e.getCharacter()) {
+                case "q":
+                    buzzP1();
+                    break;
+                case "z":
+                    buzzP2();
+                    break;
+                case "l":
+                    buzzP3();
+                    break;
+            }
+        });
+
         Scene scene = new Scene(mainPane, 955,598);
         ps.setTitle("Quiz Bowl");
         ps.setScene(scene);
         ps.show();
     }
+    private void buzzP1(){}
+    private void buzzP2(){}
+    private void buzzP3(){}
 }
