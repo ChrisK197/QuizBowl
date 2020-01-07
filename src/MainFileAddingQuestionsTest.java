@@ -68,13 +68,14 @@ public class MainFileAddingQuestionsTest extends Application {
         questionBox.yProperty().bind(qBox.yProperty().multiply(1.4));
         questionBox.wrappingWidthProperty().bind(qBox.widthProperty().multiply(.95));
 
-        Rectangle ansBox = new Rectangle(100, 400, 300, 200);
+        Rectangle ansBox = new Rectangle(425, 250, 300, 200);
         ansBox.setFill(Color.WHITE);
         mainPane.getChildren().add(ansBox);
-        ansBox.widthProperty().bind(mainPane.widthProperty().multiply(3).divide(4));
-        ansBox.heightProperty().bind(mainPane.heightProperty().divide(6));
-        ansBox.xProperty().bind(mainPane.widthProperty().divide(8));
-        ansBox.yProperty().bind(mainPane.heightProperty().divide(16));
+        ansBox.widthProperty().bind(qBox.widthProperty().divide(2));
+        ansBox.heightProperty().bind(qBox.heightProperty().divide(2));
+        ansBox.xProperty().bind(qBox.xProperty().multiply(2));
+        ansBox.yProperty().bind(qBox.yProperty().multiply(8));
+
 
         TextField answerBox = new TextField();
         mainPane.getChildren().add(answerBox);
