@@ -43,25 +43,27 @@ public class MainFile extends Application {
                 BackgroundSize.DEFAULT);
         mainPane.setBackground(new Background(myBI));
 
-
-        /*Image contestant1 = new Image("contestant1.jpg");
-        ImageView contestant1imageView = new ImageView(contestant1);
-        contestant1imageView.setFitWidth(contestant1.getWidth()/2);
-        contestant1imageView.setFitHeight(contestant1.getHeight()/2);
-        bottomPane.getChildren().add(contestant1imageView);*/
-
         Text scorep1 = new Text("0");
         scorep1.setScaleX(3);
         scorep1.setScaleY(3);
-        scorep1.xProperty().bind(mainPane.widthProperty().multiply(0.045));
+        scorep1.xProperty().bind(mainPane.widthProperty().multiply(0.055));
         scorep1.yProperty().bind(mainPane.heightProperty().multiply(.8));
         mainPane.getChildren().add(scorep1);
-    /*
-        Image contestant2 = new Image("contestant2.jpg");
-        ImageView contestant2imageView = new ImageView(contestant2);
-        contestant2imageView.setFitWidth(contestant2.getWidth()/2);
-        contestant2imageView.setFitHeight(contestant2.getHeight()/2);
-        bottomPane.getChildren().add(contestant2imageView);*/
+
+        Text scorep2 = new Text("0");
+        scorep2.setScaleX(3);
+        scorep2.setScaleY(3);
+        scorep2.xProperty().bind(mainPane.widthProperty().multiply(0.5));
+        scorep2.yProperty().bind(mainPane.heightProperty().multiply(.81));
+        mainPane.getChildren().add(scorep2);
+
+        Text scorep3 = new Text("0");
+        scorep3.setScaleX(3);
+        scorep3.setScaleY(3);
+        scorep3.xProperty().bind(mainPane.widthProperty().multiply(1-0.055));
+        scorep3.yProperty().bind(mainPane.heightProperty().multiply(.795 ));
+        mainPane.getChildren().add(scorep3);
+
 
         Rectangle qBox = new Rectangle(150, 75, 900, 100);
         qBox.setFill(Color.WHITE);
