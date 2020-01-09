@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -34,6 +35,13 @@ public class MainFile extends Application {
         mainPane.setBottom(bottomPane);
         mainPane.setCenter(questionBox);
 
+        /*Image image = new Image("background.png");
+        BackgroundSize bs = new BackgroundSize(image.getWidth(), image.getHeight(), true, true, false, true);
+        BackgroundImage myBI= new BackgroundImage(image,
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                bs);
+        mainPane.setBackground(new Background(myBI));
+        */
         BackgroundImage myBI= new BackgroundImage(new Image("background.png"),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
