@@ -86,7 +86,7 @@ public class MainFile extends Application {
 
         mainPane.setOnKeyPressed(e ->{
             String str = "";
-            questionBox.setText(e.getCode().toString());
+
             if(e.getCode().toString().equals("Z")) {
                 str = "Player 1 Answer:";
             }
