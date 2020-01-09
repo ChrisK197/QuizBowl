@@ -86,14 +86,14 @@ public class MainFile extends Application {
 
         mainPane.setOnKeyPressed(e ->{
             String str = "";
-
-            if(e.getCode().toString().equals("Q")) {
+            questionBox.setText(e.getCode().toString());
+            if(e.getCode().toString().equals("Z")) {
                 str = "Player 1 Answer:";
             }
-            else if (e.getCode().toString().equals("P")){
+            else if (e.getCode().toString().equals("B")){
                 str = "Player 2 Answer:";
             }
-            else if (e.getCode().toString().equals("DIGIT5")){
+            else if (e.getCode().toString().equals("SLASH")){
                 str = "Player 3 Answer:";
             }
             if(!str.equals("")) {
