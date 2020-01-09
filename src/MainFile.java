@@ -1,15 +1,11 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
@@ -89,25 +85,32 @@ public class MainFile extends Application {
 
 
         mainPane.setOnKeyPressed(e ->{
-            switch (e.getCharacter()) {
-                case "q":
-                    buzzP1();
-                    break;
-                case "z":
-                    buzzP2();
-                    break;
-                case "l":
-                    buzzP3();
-                    break;
+            String str = "";
+
+            if(e.getCode().toString().equals("Q")) {
+                str = "Player 1 Answer:";
+            }
+            else if (e.getCode().toString().equals("P")){
+                str = "Player 2 Answer:";
+            }
+            else if (e.getCode().toString().equals("DIGIT5")){
+                str = "Player 3 Answer:";
+            }
+            if(!str.equals("")) {
+                Stage stage = new Stage();
+                stage.setTitle(str);
+                Pane p = new Pane();
+                Scene ss = new Scene(p, 900, 600);
+                stage.setScene(ss);
+                stage.show();
             }
         });
 
         Scene scene = new Scene(mainPane, 955,598);
         ps.setTitle("Quiz Bowl");
+        mainPane.requestFocus();
         ps.setScene(scene);
         ps.show();
     }
-    private void buzzP1(){}
-    private void buzzP2(){}
-    private void buzzP3(){}
+
 }
