@@ -1,3 +1,5 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -9,13 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class MainFileAddingQuestionsTest extends Application {
@@ -68,20 +69,22 @@ public class MainFileAddingQuestionsTest extends Application {
         questionBox.yProperty().bind(qBox.yProperty().multiply(1.4));
         questionBox.wrappingWidthProperty().bind(qBox.widthProperty().multiply(.95));
 
-        Rectangle ansBox = new Rectangle(425, 250, 300, 200);
+        /*Rectangle ansBox = new Rectangle(425, 250, 300, 200);
         ansBox.setFill(Color.WHITE);
         mainPane.getChildren().add(ansBox);
         ansBox.widthProperty().bind(qBox.widthProperty().divide(2));
         ansBox.heightProperty().bind(qBox.heightProperty().divide(2));
         ansBox.xProperty().bind(qBox.xProperty().multiply(2));
-        ansBox.yProperty().bind(qBox.yProperty().multiply(8));
+        ansBox.yProperty().bind(qBox.yProperty().multiply(6));*/
 
-
-        TextField answerBox = new TextField();
-        mainPane.getChildren().add(answerBox);
-
-
-
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(3), e -> {
+                    Timer timer = new Timer();
+                    timer.schedule(new RemindTask(), 0, //initial delay
+                            1 * 10); //subsequent rate
+                    System.out.println("hi");
+                })
+        );
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, Integer> pointDict = new HashMap<>();
         HashMap<String, String> qDict = new HashMap<>();
@@ -97,8 +100,8 @@ public class MainFileAddingQuestionsTest extends Application {
             int num = (int)(Math.random()*keyListRemove.size());
             String question = keyListRemove.get(num);
             questionBox.setText(question);
+            timeline.play();
             break;
-
         }
 
         //I thought some classical music would be nice, we can change it later tho
@@ -108,7 +111,15 @@ public class MainFileAddingQuestionsTest extends Application {
 
         Scene scene = new Scene(mainPane, 955,598);
         ps.setTitle("Quiz Bowl");
+        ps.requestFocus();
         ps.setScene(scene);
         ps.show();
+    }
+}
+class RemindTask extends TimerTask {
+    //part of repeating a million times
+    public void run(){
+        Button button = new Button("Stop");
+        button.setOnAction(e -> timeline.stop());
     }
 }
