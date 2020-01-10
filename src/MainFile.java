@@ -118,7 +118,33 @@ public class MainFile extends Application {
         ps.setTitle("Quiz Bowl");
         mainPane.requestFocus();
         ps.setScene(scene);
+        ps.setResizable(false);
         ps.show();
     }
 
 }
+
+/*
+For evan's file
+
+Duration.millis(10);
+
+or
+
+Task<Void> sleeper = new Task<Void>() {
+    @Override
+    protected Void call() throws Exception {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+        }
+        return null;
+    }
+};
+sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+    @Override
+    public void handle(WorkerStateEvent event) {
+    }
+});
+new Thread(sleeper).start();
+*/
