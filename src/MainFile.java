@@ -50,22 +50,22 @@ public class MainFile extends Application {
         Text scorep1 = new Text("0");
         scorep1.setScaleX(3);
         scorep1.setScaleY(3);
-        scorep1.xProperty().bind(mainPane.widthProperty().multiply(0.055));
-        scorep1.yProperty().bind(mainPane.heightProperty().multiply(.8));
+        scorep1.xProperty().bind(mainPane.widthProperty().multiply(0.052)); //0.055
+        scorep1.yProperty().bind(mainPane.heightProperty().multiply(.79)); //.8
         mainPane.getChildren().add(scorep1);
 
         Text scorep2 = new Text("0");
         scorep2.setScaleX(3);
         scorep2.setScaleY(3);
-        scorep2.xProperty().bind(mainPane.widthProperty().multiply(0.5));
-        scorep2.yProperty().bind(mainPane.heightProperty().multiply(.81));
+        scorep2.xProperty().bind(mainPane.widthProperty().multiply(0.494)); //.5
+        scorep2.yProperty().bind(mainPane.heightProperty().multiply(.8));//.81
         mainPane.getChildren().add(scorep2);
 
         Text scorep3 = new Text("0");
         scorep3.setScaleX(3);
         scorep3.setScaleY(3);
-        scorep3.xProperty().bind(mainPane.widthProperty().multiply(1-0.055));
-        scorep3.yProperty().bind(mainPane.heightProperty().multiply(.795 ));
+        scorep3.xProperty().bind(mainPane.widthProperty().multiply(1-0.068));//1-.055
+        scorep3.yProperty().bind(mainPane.heightProperty().multiply(.786));//.795
         mainPane.getChildren().add(scorep3);
 
 
