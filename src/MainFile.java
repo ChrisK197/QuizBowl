@@ -118,7 +118,7 @@ public class MainFile extends Application {
         ps.setTitle("Quiz Bowl");
         mainPane.requestFocus();
         ps.setScene(scene);
-        ps.setResizable(false);
+        //ps.setResizable(false);
         ps.show();
     }
 

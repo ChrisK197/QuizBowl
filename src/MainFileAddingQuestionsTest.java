@@ -1,7 +1,7 @@
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -24,6 +24,7 @@ public class MainFileAddingQuestionsTest extends Application {
     private String musicFile = "Waiting.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
     private MediaPlayer mediaPlayer = new MediaPlayer(sound);
+    private Text questionBox;
 
     public void start(Stage ps) throws FileNotFoundException {
         BorderPane mainPane = new BorderPane();
@@ -63,7 +64,7 @@ public class MainFileAddingQuestionsTest extends Application {
         qBox.xProperty().bind(mainPane.widthProperty().divide(8));
         qBox.yProperty().bind(mainPane.heightProperty().divide(16));
 
-        Text questionBox = new Text();
+        questionBox = new Text();
         mainPane.getChildren().add(questionBox);
         questionBox.xProperty().bind(qBox.xProperty().multiply(1.06));
         questionBox.yProperty().bind(qBox.yProperty().multiply(1.4));
@@ -99,7 +100,7 @@ public class MainFileAddingQuestionsTest extends Application {
         while(!(keyListRemove.isEmpty())){
             int num = (int)(Math.random()*keyListRemove.size());
             String question = keyListRemove.get(num);
-            questionBox.setText(question);
+            typeText(question);
             timeline.play();
             break;
         }
@@ -115,10 +116,30 @@ public class MainFileAddingQuestionsTest extends Application {
         ps.setScene(scene);
         ps.show();
     }
+
+    public void typeText (String question) {
+        final String content = question;
+
+        final Animation animation = new Transition() {
+            {
+                setCycleDuration(Duration.millis(20000));
+            }
+
+            protected void interpolate(double frac) {
+                final int length = content.length();
+                final int n = Math.round(length * (float) frac);
+                questionBox.setText(content.substring(0, n));
+            }
+
+        };
+
+        animation.play();
+    }
 }
 class RemindTask extends TimerTask {
     //part of repeating a million times
     public void run(){
+        Timeline timeline = new Timeline();
         Button button = new Button("Stop");
         button.setOnAction(e -> timeline.stop());
     }
