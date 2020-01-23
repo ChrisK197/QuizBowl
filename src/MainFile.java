@@ -126,12 +126,12 @@ public class MainFile extends Application {
                 stage.setTitle(str);
                 Pane p = new Pane();
                 TextField answerBox = new TextField();
-                answerBox.setLayoutX(100);
-                answerBox.setLayoutY(100);
+                answerBox.setLayoutX(0);
+                answerBox.setLayoutY(0);
                 p.getChildren().add(answerBox);
 
                 p.requestFocus();
-                Scene ss = new Scene(p, 900, 600);
+                Scene ss = new Scene(p, 300, 50);
                 stage.setScene(ss);
                 stage.show();
                 p.setOnKeyPressed(j ->{
