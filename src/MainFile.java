@@ -28,6 +28,7 @@ public class MainFile extends Application {
     private Media sound = new Media(new File(musicFile).toURI().toString());
     private MediaPlayer mediaPlayer = new MediaPlayer(sound);
     private String answer;
+    private int playerWhoAnswered;
 
     public void start(Stage ps) throws FileNotFoundException {
         BorderPane mainPane = new BorderPane();
@@ -136,6 +137,12 @@ public class MainFile extends Application {
                 p.setOnKeyPressed(j ->{
                     if (j.getCode().toString().equals("ENTER")) {
                         answer = answerBox.getText();
+                        if(e.getCode().toString().equals("Z"))
+                            playerWhoAnswered = 1;
+                        else if(e.getCode().toString().equals("B"))
+                            playerWhoAnswered = 2;
+                        else if(e.getCode().toString().equals("SLASH"))
+                            playerWhoAnswered = 3;
                         stage.hide();
                     }
                 });
