@@ -150,6 +150,11 @@ public class MainFile extends Application {
             mainPane.requestFocus();
         });
 
+        //after answered
+        if(qDict.get(question)==answer){
+            //do something
+        }
+
         Scene scene = new Scene(mainPane, 955,598);
         ps.setTitle("Quiz Bowl");
         mainPane.requestFocus();
