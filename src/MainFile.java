@@ -31,9 +31,7 @@ public class MainFile extends Application {
     public void start(Stage ps) throws FileNotFoundException {
         BorderPane mainPane = new BorderPane();
         HBox bottomPane = new HBox();
-        Text questionBox = new Text();
         mainPane.setBottom(bottomPane);
-        mainPane.setCenter(questionBox);
 
         /*Image image = new Image("background.png");
         BackgroundSize bs = new BackgroundSize(image.getWidth(), image.getHeight(), true, true, false, true);
@@ -84,13 +82,30 @@ public class MainFile extends Application {
             String[] list = str.split("::");
             qDict.put(list[0], list[1]);
         }
-        ArrayList<String> keyList = new ArrayList<>(qDict.keySet());
+
 
         //I thought some classical music would be nice, we can change it later tho
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(100);
         mediaPlayer.play();
 
+        Text questionBox = new Text();
+        mainPane.getChildren().add(questionBox);
+        questionBox.xProperty().bind(qBox.xProperty().multiply(1.06));
+        questionBox.yProperty().bind(qBox.yProperty().multiply(1.4));
+        questionBox.wrappingWidthProperty().bind(qBox.widthProperty().multiply(.95));
+
+        ArrayList<String> keyList = new ArrayList<>(qDict.keySet());
+        ArrayList<String> keyListRemove = new ArrayList<>(qDict.keySet());
+
+        int num = (int)(Math.random()*keyListRemove.size());
+        String question = keyListRemove.remove(num);
+        questionBox.setText(question);
+        //while(!(keyListRemove.isEmpty())){
+          //  num = (int)(Math.random()*keyListRemove.size());
+            //question = keyListRemove.remove(num);
+            //questionBox.setText(question);
+        //}
 
         mainPane.setOnKeyPressed(e ->{
             String str = "";
@@ -108,6 +123,10 @@ public class MainFile extends Application {
                 Stage stage = new Stage();
                 stage.setTitle(str);
                 Pane p = new Pane();
+                TextField answerBox = new TextField();
+                answerBox.setLayoutX(100);
+                answerBox.setLayoutY(100);
+                p.getChildren().add(answerBox);
                 Scene ss = new Scene(p, 900, 600);
                 stage.setScene(ss);
                 stage.show();
