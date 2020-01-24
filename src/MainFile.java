@@ -1,3 +1,5 @@
+import javafx.animation.Animation;
+import javafx.animation.Transition;
 import javafx.application.Application;
 import javafx.geometry.Side;
 import javafx.scene.Scene;
@@ -13,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,8 +30,29 @@ public class MainFile extends Application {
     private String musicFile = "Waiting.mp3";
     private Media sound = new Media(new File(musicFile).toURI().toString());
     private MediaPlayer mediaPlayer = new MediaPlayer(sound);
-    private String answer;
+    private String answer ="";
     private int playerWhoAnswered;
+
+    private Text questionBox;
+
+    public void typeText (String question) {
+        final String content = question;
+
+        final Animation animation = new Transition() {
+            {
+                setCycleDuration(Duration.millis(20000));
+            }
+
+            protected void interpolate(double frac) {
+                final int length = content.length();
+                final int n = Math.round(length * (float) frac);
+                questionBox.setText(content.substring(0, n));
+            }
+
+        };
+
+        animation.play();
+    }
 
     public void start(Stage ps) throws FileNotFoundException {
         BorderPane mainPane = new BorderPane();
@@ -91,7 +115,7 @@ public class MainFile extends Application {
         mediaPlayer.setVolume(100);
         mediaPlayer.play();
 
-        Text questionBox = new Text();
+        questionBox = new Text();
         mainPane.getChildren().add(questionBox);
         questionBox.xProperty().bind(qBox.xProperty().multiply(1.06));
         questionBox.yProperty().bind(qBox.yProperty().multiply(1.4));
@@ -102,7 +126,7 @@ public class MainFile extends Application {
 
         int num = (int)(Math.random()*keyListRemove.size());
         String question = keyListRemove.remove(num);
-        questionBox.setText(question);
+        typeText(question);
         //while(!(keyListRemove.isEmpty())){
           //  num = (int)(Math.random()*keyListRemove.size());
             //question = keyListRemove.remove(num);
@@ -137,12 +161,32 @@ public class MainFile extends Application {
                 p.setOnKeyPressed(j ->{
                     if (j.getCode().toString().equals("ENTER")) {
                         answer = answerBox.getText();
-                        if(e.getCode().toString().equals("Z"))
+                        if (e.getCode().toString().equals("Z")) {
+                            if (qDict.get(question).toLowerCase().equals(answer.toLowerCase())) {
+                                System.out.println("Right " + 1);
+                            } else {
+                                System.out.println("Wrong " + 1);
+                            }
                             playerWhoAnswered = 1;
-                        else if(e.getCode().toString().equals("B"))
+                        }
+                        else if(e.getCode().toString().equals("B")) {
+                            if(qDict.get(question).toLowerCase().equals(answer.toLowerCase())){
+                                System.out.println("Right " +2);
+                            }
+                            else{
+                                System.out.println("Wrong " + 2);
+                            }
                             playerWhoAnswered = 2;
-                        else if(e.getCode().toString().equals("SLASH"))
-                            playerWhoAnswered = 3;
+                        }
+                        else if(e.getCode().toString().equals("SLASH")){
+                            if(qDict.get(question).toLowerCase().equals(answer.toLowerCase())){
+                                System.out.println("Right " +3);
+                            }
+                            else{
+                                System.out.println("Wrong " + 3);
+                            }
+                            playerWhoAnswered=3;
+                        }
                         stage.hide();
                     }
                 });
@@ -150,17 +194,13 @@ public class MainFile extends Application {
             mainPane.requestFocus();
         });
 
-        //after answered
-        if(qDict.get(question)==answer){
-            //do something
-        }
-
         Scene scene = new Scene(mainPane, 955,598);
         ps.setTitle("Quiz Bowl");
         mainPane.requestFocus();
         ps.setScene(scene);
         //ps.setResizable(false);
         ps.show();
+
     }
 
 }
