@@ -41,6 +41,7 @@ public class MainFile extends Application {
     private String question;
     private int num;
     private boolean finished =false;
+    private boolean answered=false;
 
     private Text questionBox;
 
@@ -53,14 +54,20 @@ public class MainFile extends Application {
             }
 
             protected void interpolate(double frac) {
-                final int length = content.length();
-                final int n = Math.round(length * (float) frac);
-                questionBox.setText(content.substring(0, n));
+                if(answered==false) {
+                    final int length = content.length();
+                    final int n = Math.round(length * (float) frac);
+                    questionBox.setText(content.substring(0, n));
+                }
             }
 
         };
-
-        animation.play();
+        if(answered==true){
+            animation.pause();
+        }
+        else{
+            animation.play();
+        }
     }
 
     public void start(Stage ps) throws FileNotFoundException {
@@ -133,6 +140,7 @@ public class MainFile extends Application {
         question = keyListRemove.remove(num);
         typeText(question);
         moveOn.setOnAction(e ->{
+            answered=false;
             if(keyListRemove.size()>0) {
                 num = (int) (Math.random() * keyListRemove.size());
                 question = keyListRemove.remove(num);
@@ -178,11 +186,13 @@ public class MainFile extends Application {
                 if(!buzzed1) {
                     str = "Player 1 Answer:";
                     buzzed1 = true;
+                    answered=true;
                 }
             }
             else if (e.getCode().toString().equals("B")){
                 if(!buzzed2) {
                     str = "Player 2 Answer:";
+                    answered=true;
                     buzzed2 = true;
                 }
             }
@@ -190,6 +200,7 @@ public class MainFile extends Application {
                 if(!buzzed3) {
                     str = "Player 3 Answer:";
                     buzzed3 = true;
+                    answered=true;
                 }
             }
             if(!str.equals("")) {
@@ -208,6 +219,7 @@ public class MainFile extends Application {
                 p.setOnKeyPressed(j ->{
                     if (j.getCode().toString().equals("ENTER")) {
                         answer = answerBox.getText();
+                        answered=false;
                         if (e.getCode().toString().equals("Z")) {
                             if (qDict.get(question).toLowerCase().equals(answer.toLowerCase())) {
                                 System.out.println("Right " + 1);
@@ -231,6 +243,24 @@ public class MainFile extends Application {
                             } else {
                                 System.out.println("Wrong " + 1);
                                 points1 -= 10; scorep1.setText(String.format("%d",points1));
+                                if(buzzed1==true && buzzed2==true && buzzed3 ==true){
+                                    if(keyListRemove.size()>0) {
+                                        num = (int) (Math.random() * keyListRemove.size());
+                                        question = keyListRemove.remove(num);
+                                        typeText(question);
+                                        buzzed1 = false;
+                                        buzzed2 = false;
+                                        buzzed3 = false;
+                                    }
+                                    if(keyListRemove.size()<=0 && finished==false){
+                                        typeText("You answered all the questions                                                                                                                                                                                    ");
+                                        //questionBox.setText("ou answered all the questions.");
+                                        buzzed1 = true;
+                                        buzzed2 = true;
+                                        buzzed3 = true;
+                                        finished=true;
+                                    }
+                                }
                             }
                             playerWhoAnswered = 1;
                         }
@@ -258,6 +288,24 @@ public class MainFile extends Application {
                             else{
                                 System.out.println("Wrong " + 2);
                                 points2 -= 10; scorep2.setText(String.format("%d",points2));
+                                if(buzzed1==true && buzzed2==true && buzzed3 ==true){
+                                    if(keyListRemove.size()>0) {
+                                        num = (int) (Math.random() * keyListRemove.size());
+                                        question = keyListRemove.remove(num);
+                                        typeText(question);
+                                        buzzed1 = false;
+                                        buzzed2 = false;
+                                        buzzed3 = false;
+                                    }
+                                    if(keyListRemove.size()<=0 && finished==false){
+                                        typeText("You answered all the questions                                                                                                                                                                                    ");
+                                        //questionBox.setText("ou answered all the questions.");
+                                        buzzed1 = true;
+                                        buzzed2 = true;
+                                        buzzed3 = true;
+                                        finished=true;
+                                    }
+                                }
                             }
                             playerWhoAnswered = 2;
                         }
@@ -285,6 +333,24 @@ public class MainFile extends Application {
                             else{
                                 System.out.println("Wrong " + 3);
                                 points3 -= 10; scorep3.setText(String.format("%d",points3));
+                                if(buzzed1==true && buzzed2==true && buzzed3 ==true){
+                                    if(keyListRemove.size()>0) {
+                                        num = (int) (Math.random() * keyListRemove.size());
+                                        question = keyListRemove.remove(num);
+                                        typeText(question);
+                                        buzzed1 = false;
+                                        buzzed2 = false;
+                                        buzzed3 = false;
+                                    }
+                                    if(keyListRemove.size()<=0 && finished==false){
+                                        typeText("You answered all the questions                                                                                                                                                                                    ");
+                                        //questionBox.setText("ou answered all the questions.");
+                                        buzzed1 = true;
+                                        buzzed2 = true;
+                                        buzzed3 = true;
+                                        finished=true;
+                                    }
+                                }
                             }
                             playerWhoAnswered=3;
                         }
