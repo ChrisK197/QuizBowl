@@ -34,6 +34,9 @@ public class MainFile extends Application {
     private boolean buzzed1 = false;
     private boolean buzzed2 = false;
     private boolean buzzed3 = false;
+    private int points1 = 0;
+    private int points2 = 0;
+    private int points3 = 0;
     private int playerWhoAnswered;
 
     private Text questionBox;
@@ -74,21 +77,21 @@ public class MainFile extends Application {
                 BackgroundSize.DEFAULT);
         mainPane.setBackground(new Background(myBI));
 
-        Text scorep1 = new Text("0");
+        Text scorep1 = new Text(String.format("%d",points1));
         scorep1.setScaleX(3);
         scorep1.setScaleY(3);
         scorep1.xProperty().bind(mainPane.widthProperty().multiply(0.055));
         scorep1.yProperty().bind(mainPane.heightProperty().multiply(.8));
         mainPane.getChildren().add(scorep1);
 
-        Text scorep2 = new Text("0");
+        Text scorep2 = new Text(String.format("%d",points2));
         scorep2.setScaleX(3);
         scorep2.setScaleY(3);
         scorep2.xProperty().bind(mainPane.widthProperty().multiply(0.5));
         scorep2.yProperty().bind(mainPane.heightProperty().multiply(.81));
         mainPane.getChildren().add(scorep2);
 
-        Text scorep3 = new Text("0");
+        Text scorep3 = new Text(String.format("%d",points3));
         scorep3.setScaleX(3);
         scorep3.setScaleY(3);
         scorep3.xProperty().bind(mainPane.widthProperty().multiply(1-0.055));
@@ -176,26 +179,32 @@ public class MainFile extends Application {
                         if (e.getCode().toString().equals("Z")) {
                             if (qDict.get(question).toLowerCase().equals(answer.toLowerCase())) {
                                 System.out.println("Right " + 1);
+                                points1 += 10; scorep1.setText(String.format("%d",points1));
                             } else {
                                 System.out.println("Wrong " + 1);
+                                points1 -= 10; scorep1.setText(String.format("%d",points1));
                             }
                             playerWhoAnswered = 1;
                         }
                         else if(e.getCode().toString().equals("B")) {
                             if(qDict.get(question).toLowerCase().equals(answer.toLowerCase())){
                                 System.out.println("Right " +2);
+                                points2 += 10; scorep2.setText(String.format("%d",points2));
                             }
                             else{
                                 System.out.println("Wrong " + 2);
+                                points2 -= 10; scorep2.setText(String.format("%d",points2));
                             }
                             playerWhoAnswered = 2;
                         }
                         else if(e.getCode().toString().equals("SLASH")){
                             if(qDict.get(question).toLowerCase().equals(answer.toLowerCase())){
                                 System.out.println("Right " +3);
+                                points3 += 10; scorep3.setText(String.format("%d",points3));
                             }
                             else{
                                 System.out.println("Wrong " + 3);
+                                points3 -= 10; scorep3.setText(String.format("%d",points3));
                             }
                             playerWhoAnswered=3;
                         }
