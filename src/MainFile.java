@@ -107,6 +107,13 @@ public class MainFile extends Application {
         qBox.xProperty().bind(mainPane.widthProperty().divide(8));
         qBox.yProperty().bind(mainPane.heightProperty().divide(16));
 
+        Pane centerPane = new Pane();
+        Button moveOn = new Button ("Click this to go to the next question.");
+        mainPane.setCenter(centerPane);
+        centerPane.getChildren().add(moveOn);
+        moveOn.setLayoutX(380);
+        moveOn.setLayoutY(249);
+
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
         while (s.hasNext()){
