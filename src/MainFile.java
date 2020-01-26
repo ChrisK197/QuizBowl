@@ -38,6 +38,9 @@ public class MainFile extends Application {
     private int points2 = 0;
     private int points3 = 0;
     private int playerWhoAnswered;
+    private String question;
+    private int num;
+    private boolean finished =false;
 
     private Text questionBox;
 
@@ -113,6 +116,7 @@ public class MainFile extends Application {
         centerPane.getChildren().add(moveOn);
         moveOn.setLayoutX(380);
         moveOn.setLayoutY(249);
+        //may need to request focus
 
         Scanner s = new Scanner(new FileReader("questions.txt"));
         HashMap<String, String> qDict = new HashMap<>();
@@ -121,6 +125,32 @@ public class MainFile extends Application {
             String[] list = str.split("::");
             qDict.put(list[0], list[1]);
         }
+
+        ArrayList<String> keyList = new ArrayList<>(qDict.keySet());
+        ArrayList<String> keyListRemove = new ArrayList<>(qDict.keySet());
+
+        num = (int)(Math.random()*keyListRemove.size());
+        question = keyListRemove.remove(num);
+        typeText(question);
+        moveOn.setOnAction(e ->{
+            if(keyListRemove.size()>0) {
+                num = (int) (Math.random() * keyListRemove.size());
+                question = keyListRemove.remove(num);
+                typeText(question);
+                buzzed1 = false;
+                buzzed2 = false;
+                buzzed3 = false;
+            }
+            if(keyListRemove.size()<=0 && finished==false){
+                typeText("You answered all the questions                                                                                                                                                                                    ");
+                //questionBox.setText("ou answered all the questions.");
+                buzzed1 = true;
+                buzzed2 = true;
+                buzzed3 = true;
+                finished=true;
+            }
+        });
+
 
 
         //I thought some classical music would be nice, we can change it later tho
@@ -134,12 +164,7 @@ public class MainFile extends Application {
         questionBox.yProperty().bind(qBox.yProperty().multiply(1.4));
         questionBox.wrappingWidthProperty().bind(qBox.widthProperty().multiply(.95));
 
-        ArrayList<String> keyList = new ArrayList<>(qDict.keySet());
-        ArrayList<String> keyListRemove = new ArrayList<>(qDict.keySet());
 
-        int num = (int)(Math.random()*keyListRemove.size());
-        String question = keyListRemove.remove(num);
-        typeText(question);
         //while(!(keyListRemove.isEmpty())){
           //  num = (int)(Math.random()*keyListRemove.size());
             //question = keyListRemove.remove(num);
@@ -187,6 +212,22 @@ public class MainFile extends Application {
                             if (qDict.get(question).toLowerCase().equals(answer.toLowerCase())) {
                                 System.out.println("Right " + 1);
                                 points1 += 10; scorep1.setText(String.format("%d",points1));
+                                if(keyListRemove.size()>0) {
+                                    num = (int) (Math.random() * keyListRemove.size());
+                                    question = keyListRemove.remove(num);
+                                    typeText(question);
+                                    buzzed1 = false;
+                                    buzzed2 = false;
+                                    buzzed3 = false;
+                                }
+                                if(keyListRemove.size()<=0 && finished==false){
+                                    typeText("You answered all the questions                                                                                                                                                                                    ");
+                                    //questionBox.setText("ou answered all the questions.");
+                                    buzzed1 = true;
+                                    buzzed2 = true;
+                                    buzzed3 = true;
+                                    finished=true;
+                                }
                             } else {
                                 System.out.println("Wrong " + 1);
                                 points1 -= 10; scorep1.setText(String.format("%d",points1));
@@ -197,6 +238,22 @@ public class MainFile extends Application {
                             if(qDict.get(question).toLowerCase().equals(answer.toLowerCase())){
                                 System.out.println("Right " +2);
                                 points2 += 10; scorep2.setText(String.format("%d",points2));
+                                if(keyListRemove.size()>0) {
+                                    num = (int) (Math.random() * keyListRemove.size());
+                                    question = keyListRemove.remove(num);
+                                    typeText(question);
+                                    buzzed1 = false;
+                                    buzzed2 = false;
+                                    buzzed3 = false;
+                                }
+                                if(keyListRemove.size()<=0 && finished==false){
+                                    typeText("You answered all the questions                                                                                                                                                                                    ");
+                                    //questionBox.setText("ou answered all the questions.");
+                                    buzzed1 = true;
+                                    buzzed2 = true;
+                                    buzzed3 = true;
+                                    finished=true;
+                                }
                             }
                             else{
                                 System.out.println("Wrong " + 2);
@@ -208,6 +265,22 @@ public class MainFile extends Application {
                             if(qDict.get(question).toLowerCase().equals(answer.toLowerCase())){
                                 System.out.println("Right " +3);
                                 points3 += 10; scorep3.setText(String.format("%d",points3));
+                                if(keyListRemove.size()>0) {
+                                    num = (int) (Math.random() * keyListRemove.size());
+                                    question = keyListRemove.remove(num);
+                                    typeText(question);
+                                    buzzed1 = false;
+                                    buzzed2 = false;
+                                    buzzed3 = false;
+                                }
+                                if(keyListRemove.size()<=0 && finished==false){
+                                    typeText("You answered all the questions                                                                                                                                                                                    ");
+                                    //questionBox.setText("ou answered all the questions.");
+                                    buzzed1 = true;
+                                    buzzed2 = true;
+                                    buzzed3 = true;
+                                    finished=true;
+                                }
                             }
                             else{
                                 System.out.println("Wrong " + 3);
