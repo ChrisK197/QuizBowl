@@ -31,6 +31,9 @@ public class MainFile extends Application {
     private Media sound = new Media(new File(musicFile).toURI().toString());
     private MediaPlayer mediaPlayer = new MediaPlayer(sound);
     private String answer ="";
+    private boolean buzzed1 = false;
+    private boolean buzzed2 = false;
+    private boolean buzzed3 = false;
     private int playerWhoAnswered;
 
     private Text questionBox;
@@ -137,13 +140,22 @@ public class MainFile extends Application {
             String str = "";
 
             if(e.getCode().toString().equals("Z")) {
-                str = "Player 1 Answer:";
+                if(!buzzed1) {
+                    str = "Player 1 Answer:";
+                    buzzed1 = true;
+                }
             }
             else if (e.getCode().toString().equals("B")){
-                str = "Player 2 Answer:";
+                if(!buzzed2) {
+                    str = "Player 2 Answer:";
+                    buzzed2 = true;
+                }
             }
             else if (e.getCode().toString().equals("SLASH")){
-                str = "Player 3 Answer:";
+                if(!buzzed3) {
+                    str = "Player 3 Answer:";
+                    buzzed3 = true;
+                }
             }
             if(!str.equals("")) {
                 Stage stage = new Stage();
