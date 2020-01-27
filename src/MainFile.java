@@ -42,6 +42,7 @@ public class MainFile extends Application {
     private int num;
     private boolean finished =false;
     private boolean answered=false;
+    private boolean doneRunning = false;
 
     private Text questionBox;
 
@@ -68,6 +69,7 @@ public class MainFile extends Application {
         else{
             animation.play();
         }
+        animation.setOnFinished(e -> doneRunning = true);
     }
 
     public void start(Stage ps) throws FileNotFoundException {
@@ -150,7 +152,7 @@ public class MainFile extends Application {
                 buzzed3 = false;
             }
             if(keyListRemove.size()<=0 && finished==false){
-                typeText("You answered all the questions                                                                                                                                                                                    ");
+                typeText(getWinner() + "                                                       ");
                 //questionBox.setText("ou answered all the questions.");
                 buzzed1 = true;
                 buzzed2 = true;
@@ -233,7 +235,7 @@ public class MainFile extends Application {
                                     buzzed3 = false;
                                 }
                                 if(keyListRemove.size()<=0 && finished==false){
-                                    typeText("You answered all the questions                                                                                                                                                                                    ");
+                                    typeText(getWinner() + "                                                       ");
                                     //questionBox.setText("ou answered all the questions.");
                                     buzzed1 = true;
                                     buzzed2 = true;
@@ -243,6 +245,9 @@ public class MainFile extends Application {
                             } else {
                                 System.out.println("Wrong " + 1);
                                 points1 -= 10; scorep1.setText(String.format("%d",points1));
+                                if (doneRunning && !questionBox.getText().equals(question)){
+                                    questionBox.setText(question);
+                                }
                                 if(buzzed1==true && buzzed2==true && buzzed3 ==true){
                                     if(keyListRemove.size()>0) {
                                         num = (int) (Math.random() * keyListRemove.size());
@@ -253,7 +258,7 @@ public class MainFile extends Application {
                                         buzzed3 = false;
                                     }
                                     if(keyListRemove.size()<=0 && finished==false){
-                                        typeText("You answered all the questions                                                                                                                                                                                    ");
+                                        typeText(getWinner() + "                                                       ");
                                         //questionBox.setText("ou answered all the questions.");
                                         buzzed1 = true;
                                         buzzed2 = true;
@@ -277,7 +282,7 @@ public class MainFile extends Application {
                                     buzzed3 = false;
                                 }
                                 if(keyListRemove.size()<=0 && finished==false){
-                                    typeText("You answered all the questions                                                                                                                                                                                    ");
+                                    typeText(getWinner() + "                                                       ");
                                     //questionBox.setText("ou answered all the questions.");
                                     buzzed1 = true;
                                     buzzed2 = true;
@@ -288,6 +293,9 @@ public class MainFile extends Application {
                             else{
                                 System.out.println("Wrong " + 2);
                                 points2 -= 10; scorep2.setText(String.format("%d",points2));
+                                if (doneRunning && !questionBox.getText().equals(question)){
+                                    questionBox.setText(question);
+                                }
                                 if(buzzed1==true && buzzed2==true && buzzed3 ==true){
                                     if(keyListRemove.size()>0) {
                                         num = (int) (Math.random() * keyListRemove.size());
@@ -298,7 +306,7 @@ public class MainFile extends Application {
                                         buzzed3 = false;
                                     }
                                     if(keyListRemove.size()<=0 && finished==false){
-                                        typeText("You answered all the questions                                                                                                                                                                                    ");
+                                        typeText(getWinner() + "                                                       ");
                                         //questionBox.setText("ou answered all the questions.");
                                         buzzed1 = true;
                                         buzzed2 = true;
@@ -322,7 +330,7 @@ public class MainFile extends Application {
                                     buzzed3 = false;
                                 }
                                 if(keyListRemove.size()<=0 && finished==false){
-                                    typeText("You answered all the questions                                                                                                                                                                                    ");
+                                    typeText(getWinner() + "                                                       ");
                                     //questionBox.setText("ou answered all the questions.");
                                     buzzed1 = true;
                                     buzzed2 = true;
@@ -333,6 +341,9 @@ public class MainFile extends Application {
                             else{
                                 System.out.println("Wrong " + 3);
                                 points3 -= 10; scorep3.setText(String.format("%d",points3));
+                                if (doneRunning && !questionBox.getText().equals(question)){
+                                    questionBox.setText(question);
+                                }
                                 if(buzzed1==true && buzzed2==true && buzzed3 ==true){
                                     if(keyListRemove.size()>0) {
                                         num = (int) (Math.random() * keyListRemove.size());
@@ -343,7 +354,7 @@ public class MainFile extends Application {
                                         buzzed3 = false;
                                     }
                                     if(keyListRemove.size()<=0 && finished==false){
-                                        typeText("You answered all the questions                                                                                                                                                                                    ");
+                                        typeText(getWinner() + "                                                       ");
                                         //questionBox.setText("ou answered all the questions.");
                                         buzzed1 = true;
                                         buzzed2 = true;
@@ -368,6 +379,30 @@ public class MainFile extends Application {
         //ps.setResizable(false);
         ps.show();
 
+    }
+
+    public String getWinner(){
+        if (points1 > points2 && points1 > points3){
+            return "Player 1 Wins!";
+        }
+        else if (points2 > points1 && points2 > points3){
+            return "Player 2 Wins!";
+        }
+        else if (points3 > points1 && points3 > points2){
+            return "Player 3 Wins!";
+        }
+        else if (points1 == points2 && points1 > points3){
+            return "Player 1 and Player 2 Win!";
+        }
+        else if (points3 == points2 && points3 > points1){
+            return "Player 1 and Player 2 Win!";
+        }
+        else if (points1 == points3 && points1 > points2){
+            return "Player 1 and Player 2 Win!";
+        }
+        else{
+            return "Tie";
+        }
     }
 
 }
