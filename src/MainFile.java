@@ -392,10 +392,10 @@ public class MainFile extends Application {
             return "Player 1 and Player 2 Win!";
         }
         else if (points3 == points2 && points3 > points1){
-            return "Player 1 and Player 2 Win!";
+            return "Player 2 and Player 3 Win!";
         }
         else if (points1 == points3 && points1 > points2){
-            return "Player 1 and Player 2 Win!";
+            return "Player 1 and Player 3 Win!";
         }
         else{
             return "Tie";
