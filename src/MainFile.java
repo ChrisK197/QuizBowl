@@ -1,13 +1,10 @@
 import javafx.animation.Animation;
 import javafx.animation.Transition;
 import javafx.application.Application;
-import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -55,7 +52,7 @@ public class MainFile extends Application {
             }
 
             protected void interpolate(double frac) {
-                if(answered==false) {
+                if(!answered) {
                     final int length = content.length();
                     final int n = Math.round(length * (float) frac);
                     questionBox.setText(content.substring(0, n));
@@ -63,7 +60,7 @@ public class MainFile extends Application {
             }
 
         };
-        if(answered==true){
+        if(answered){
             animation.pause();
         }
         else{
@@ -151,7 +148,7 @@ public class MainFile extends Application {
                 buzzed2 = false;
                 buzzed3 = false;
             }
-            if(keyListRemove.size()<=0 && finished==false){
+            if(keyListRemove.size()<=0 && !finished){
                 typeText(getWinner() + "                                                       ");
                 //questionBox.setText("ou answered all the questions.");
                 buzzed1 = true;
@@ -234,7 +231,7 @@ public class MainFile extends Application {
                                     buzzed2 = false;
                                     buzzed3 = false;
                                 }
-                                if(keyListRemove.size()<=0 && finished==false){
+                                if(keyListRemove.size()<=0 && !finished){
                                     typeText(getWinner() + "                                                       ");
                                     //questionBox.setText("ou answered all the questions.");
                                     buzzed1 = true;
@@ -248,7 +245,7 @@ public class MainFile extends Application {
                                 if (doneRunning && !questionBox.getText().equals(question)){
                                     questionBox.setText(question);
                                 }
-                                if(buzzed1==true && buzzed2==true && buzzed3 ==true){
+                                if(buzzed1 && buzzed2 && buzzed3){
                                     if(keyListRemove.size()>0) {
                                         num = (int) (Math.random() * keyListRemove.size());
                                         question = keyListRemove.remove(num);
@@ -257,7 +254,7 @@ public class MainFile extends Application {
                                         buzzed2 = false;
                                         buzzed3 = false;
                                     }
-                                    if(keyListRemove.size()<=0 && finished==false){
+                                    if(keyListRemove.size()<=0 && !finished){
                                         typeText(getWinner() + "                                                       ");
                                         //questionBox.setText("ou answered all the questions.");
                                         buzzed1 = true;
@@ -281,7 +278,7 @@ public class MainFile extends Application {
                                     buzzed2 = false;
                                     buzzed3 = false;
                                 }
-                                if(keyListRemove.size()<=0 && finished==false){
+                                if(keyListRemove.size()<=0 && !finished){
                                     typeText(getWinner() + "                                                       ");
                                     //questionBox.setText("ou answered all the questions.");
                                     buzzed1 = true;
@@ -296,7 +293,7 @@ public class MainFile extends Application {
                                 if (doneRunning && !questionBox.getText().equals(question)){
                                     questionBox.setText(question);
                                 }
-                                if(buzzed1==true && buzzed2==true && buzzed3 ==true){
+                                if(buzzed1 && buzzed2 && buzzed3){
                                     if(keyListRemove.size()>0) {
                                         num = (int) (Math.random() * keyListRemove.size());
                                         question = keyListRemove.remove(num);
@@ -305,7 +302,7 @@ public class MainFile extends Application {
                                         buzzed2 = false;
                                         buzzed3 = false;
                                     }
-                                    if(keyListRemove.size()<=0 && finished==false){
+                                    if(keyListRemove.size()<=0 && !finished){
                                         typeText(getWinner() + "                                                       ");
                                         //questionBox.setText("ou answered all the questions.");
                                         buzzed1 = true;
@@ -329,7 +326,7 @@ public class MainFile extends Application {
                                     buzzed2 = false;
                                     buzzed3 = false;
                                 }
-                                if(keyListRemove.size()<=0 && finished==false){
+                                if(keyListRemove.size()<=0 && !finished){
                                     typeText(getWinner() + "                                                       ");
                                     //questionBox.setText("ou answered all the questions.");
                                     buzzed1 = true;
@@ -344,7 +341,7 @@ public class MainFile extends Application {
                                 if (doneRunning && !questionBox.getText().equals(question)){
                                     questionBox.setText(question);
                                 }
-                                if(buzzed1==true && buzzed2==true && buzzed3 ==true){
+                                if(buzzed1 && buzzed2 && buzzed3){
                                     if(keyListRemove.size()>0) {
                                         num = (int) (Math.random() * keyListRemove.size());
                                         question = keyListRemove.remove(num);
@@ -353,7 +350,7 @@ public class MainFile extends Application {
                                         buzzed2 = false;
                                         buzzed3 = false;
                                     }
-                                    if(keyListRemove.size()<=0 && finished==false){
+                                    if(keyListRemove.size()<=0 && !finished){
                                         typeText(getWinner() + "                                                       ");
                                         //questionBox.setText("ou answered all the questions.");
                                         buzzed1 = true;
